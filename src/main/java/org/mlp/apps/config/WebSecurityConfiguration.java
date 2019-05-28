@@ -2,6 +2,7 @@ package org.mlp.apps.config;
 
 import org.mlp.apps.config.user.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -56,6 +57,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and()
             .logout() // Metodo get pues he desabilitado CSRF
             .permitAll();
+    	http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll();
     }
 
 }
