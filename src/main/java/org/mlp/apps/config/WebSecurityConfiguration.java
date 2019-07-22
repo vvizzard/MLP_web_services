@@ -57,6 +57,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and()
             .logout() // Metodo get pues he desabilitado CSRF
             .permitAll();
+		http.cors();
     	http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll();
     }
 
